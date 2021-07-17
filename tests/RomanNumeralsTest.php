@@ -28,6 +28,18 @@ class RomanNumeralsTest extends TestCase
 	{
 		$romanNumeral = $this->romanNumerals->fromNumber(3);
 		$this->assertEquals('III', $romanNumeral);
-
 	}
+
+	public function testFourReturnsIV()
+	{
+		$romanNumeral = $this->romanNumerals->fromNumber(4);
+		$this->assertEquals('IV', $romanNumeral);
+	}
+
+	public function testFor2648ReturnsMMDCXLVIII()
+	{
+		$romanNumeral = $this->romanNumerals->fromNumber(2648);
+		$this->assertEquals('MMDCXLVIII', $romanNumeral);
+	}
+
 }
