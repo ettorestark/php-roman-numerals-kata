@@ -4,32 +4,36 @@ namespace Inc;
 
 class RomanNumerals
 {
-	private $numerals = [
-		[ 'value' => 1000, 'numeral' => 'M' ],
-		[ 'value' => 900, 'numeral' => 'CM' ],
-		[ 'value' => 500, 'numeral' => 'D' ],
-		[ 'value' => 400, 'numeral' => 'CD' ],
-		[ 'value' => 100, 'numeral' => 'C' ],
-		[ 'value' => 90, 'numeral' => 'XC' ],
-		[ 'value' => 50, 'numeral' => 'L' ],
-		[ 'value' => 40, 'numeral' => 'XL' ],
-		[ 'value' => 10, 'numeral' => 'X' ],
-		[ 'value' => 9, 'numeral' => 'IX' ],
-		[ 'value' => 5, 'numeral' => 'V' ],
-		[ 'value' => 4, 'numeral' => 'IV' ],
-		[ 'value' => 1, 'numeral' => 'I' ]
+	private $romanNumeralDictionary	= [
+		'M' => 1000,
+		'CM' => 900,
+		'D' => 500,
+		'CD' => 400,
+		'C' => 100,
+		'XC' => 90,
+		'L' => 50,
+		'XL' => 40,
+		'X' => 10,
+		'IX' => 9,
+		'V' => 5,
+		'IV' => 4,
+		'I' => 1
 	];
 
-	public function fromNumber(int $number)
+	public function fromNumber(int $decimalNumber)
 	{
-		$result = "";
+		$romanNumber = '';
 
-		for ($i = 0; $i <= count($this->numerals); $i++) {
-			for (; $number >= $this->numerals[$i]['value']; $number -= $this->numerals[$i]['value']){
-				$result += $this->numerals[$i]['numeral'];
-			}
+		foreach ($this->romanNumeralDictionary as $roman => $value) {
+			$matches = intval($decimalNumber / $value);
+
+			$romanNumber .= str_repeat($roman, $matches);
+
+			$decimalNumber =  $decimalNumber % $value;
+
+			if ($decimalNumber == 0) break;
 		}
 
-		return $result;
+		return $romanNumber;
 	}
 }
