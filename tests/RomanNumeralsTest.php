@@ -12,31 +12,31 @@ class RomanNumeralsTest extends TestCase
 		$this->romanNumerals = new RomanNumerals();
 	}
 
-	public function testOneReturnsI()
+	public function testOneShouldReturnsI()
 	{
 		$romanNumeral = $this->romanNumerals->fromNumber(1);
 		$this->assertEquals('I', $romanNumeral);
 	}
 
-	public function testTwoReturnsII()
+	public function testTwoShouldReturnsII()
 	{
 		$romanNumeral = $this->romanNumerals->fromNumber(2);
 		$this->assertEquals('II', $romanNumeral);
 	}
 
-	public function testThreReturnsIII()
+	public function testThreeShouldReturnsThree()
 	{
 		$romanNumeral = $this->romanNumerals->fromNumber(3);
 		$this->assertEquals('III', $romanNumeral);
 	}
 
-	public function testFourReturnsIV()
+	public function testFourShouldReturnsIV()
 	{
 		$romanNumeral = $this->romanNumerals->fromNumber(4);
 		$this->assertEquals('IV', $romanNumeral);
 	}
 
-	public function testFor2648ReturnsMMDCXLVIII()
+	public function test2648ShouldReturnsMMDCXLVIII()
 	{
 		$romanNumeral = $this->romanNumerals->fromNumber(2648);
 		$this->assertEquals('MMDCXLVIII', $romanNumeral);
